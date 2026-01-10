@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Staff({ teamMembers }) {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -38,14 +39,14 @@ export default function Staff({ teamMembers }) {
         ))}
       </div>
 
-      {/* Modal Popup */}
-      {selectedMember && (
+      {/* Modal Popup - Rendered via Portal */}
+      {selectedMember && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center"
           onClick={() => setSelectedMember(null)}
         >
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/70" />
+          <div className="fixed inset-0 bg-black/70" />
 
           {/* Modal Content */}
           <div
@@ -87,13 +88,14 @@ export default function Staff({ teamMembers }) {
                   &times;
                 </button>
               </div>
-              <div className="mt-4 prose prose-invert text-gray-300">
+              <div className="mt-4 text-gray-300">
                 <p>{selectedMember.description}</p>
                 <p><strong>Fun Fact:</strong> {selectedMember.funFact}</p>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

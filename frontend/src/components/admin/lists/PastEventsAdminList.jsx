@@ -22,7 +22,7 @@ export default function PastEventsAdminList({ onEditClick }) {
 
   return (
     <ItemsList itemsName="Past Events">
-      {isPending ? <Loading item={'past events'} /> :
+      {isPending ? <LoadingSpinner className="h-20 w-20" /> :
         isError ? <ErrorMessage>Could not get past events</ErrorMessage> :
           pastEvents.length === 0 ? <InfoMessage>No past events to display</InfoMessage> :
             pastEvents.map((pastEvent) => {

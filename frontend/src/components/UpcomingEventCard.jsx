@@ -1,3 +1,5 @@
+import { formatEventDate } from '../utils/dateFormatter';
+
 export default function UpcomingEventCard({ event }) {
   return (
     <div
@@ -18,7 +20,7 @@ export default function UpcomingEventCard({ event }) {
           {event.title}
         </h3>
         <p className="text-gray-200 text-sm oswald-400">
-          {event.date}
+          {formatEventDate(event.date)}
         </p>
       </div>
     </div>

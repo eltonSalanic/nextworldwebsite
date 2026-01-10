@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { formatEventDate } from '../utils/dateFormatter';
 
 export default function PastEventCard({ event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function PastEventCard({ event }) {
             {event.title}
           </h3>
           <p className="text-gray-200 text-sm oswald-400">
-            {event.date}
+            {formatEventDate(event.date)}
           </p>
         </div>
       </div>
@@ -43,7 +44,7 @@ export default function PastEventCard({ event }) {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-2xl font-bold mb-2 racing-sans-one-regular">{event.title}</h3>
-            <p className="text-gray-600 mb-4 bebas-kai-regular">{event.date}</p>
+            <p className="text-gray-600 mb-4 bebas-kai-regular">{formatEventDate(event.date)}</p>
             
             {event.description && (
               <p className="text-gray-800 mb-4 oswald-400">{event.description}</p>

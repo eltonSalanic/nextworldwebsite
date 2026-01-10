@@ -12,6 +12,11 @@ export default function ArticlesContainer() {
     config: { staleTime: 10 * 60 * 1000 } 
   });
 
+  // Sort articles by date (most recent first)
+  const sortedArticles = articles ? [...articles].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  }) : [];
+
   return(
     <section className="py-20 bg-black text-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -20,9 +25,9 @@ export default function ArticlesContainer() {
         </h2>
         {isPending ? <Loading item="Articles" /> :
           isError ? <ErrorMessage>Could not load articles</ErrorMessage> :
-            articles.length === 0 ? <InfoMessage >There are currently no articles to display. More coming soon!</InfoMessage> :
+            sortedArticles.length === 0 ? <InfoMessage >There are currently no articles to display. More coming soon!</InfoMessage> :
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {articles.map(article => <ArticleCard key={article.id} article={article}></ArticleCard>)}
+                {sortedArticles.map(article => <ArticleCard key={article.id} article={article}></ArticleCard>)}
               </div>
         }
       </div>

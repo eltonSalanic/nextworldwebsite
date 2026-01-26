@@ -1,7 +1,7 @@
 import useDelete from "../../../hooks/useDelete.jsx";
 import useFetch from "../../../hooks/useFetch.jsx";
 import { getPastEvents, deletePastEventById } from "../../../services/pastEventsService.js";
-import Loading from "../../ui/Loading.jsx";
+import LoadingSpinner from "../../ui/LoadingSpinner.jsx";
 import ItemsList from "../ItemsList.jsx";
 import ErrorMessage from "../../ui/ErrorMessage.jsx";
 import ItemCard from "../ItemCard.jsx";

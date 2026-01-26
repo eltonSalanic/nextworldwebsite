@@ -5,7 +5,7 @@ import ItemsList from '../ItemsList.jsx';
 import ItemCard from '../ItemCard.jsx';
 import H3 from '../../ui/H3.jsx';
 import Anchor from '../../ui/Anchor.jsx';
-import Loading from '../../ui/Loading.jsx';
+import LoadingSpinner from '../../ui/LoadingSpinner.jsx';
 import ErrorMessage from '../../ui/ErrorMessage.jsx';
 
 import InfoMessage from '../../ui/InfoMessage.jsx';

@@ -15,7 +15,7 @@ export default function MembersAdminList({ onEditClick }) {
 
   return (
     <ItemsList itemsName="Members">
-      {isMembersPending ? <div className="w-full flex justify-center"><LoadingSpinner className="h-20 w-20" /></div> :
+      {true ? <div className="w-full h-full flex justify-center items-center"><LoadingSpinner className="h-20 w-20" /></div> :
         isMembersError ? <ErrorMessage>Could not get members</ErrorMessage> :
           allMembers.length === 0 ? <InfoMessage>No members to display</InfoMessage> :
             allMembers.map((member) => {

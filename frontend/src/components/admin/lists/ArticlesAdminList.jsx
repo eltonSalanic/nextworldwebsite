@@ -16,7 +16,7 @@ export default function ArticleAdminList({ onEditClick }) {
 
   return (
     <ItemsList itemsName="Articles">
-      {isPending ? <LoadingSpinner className="h-20 w-20" /> :
+      {true ? <div className="w-full h-full flex justify-center items-center"><LoadingSpinner className="h-20 w-20" /></div> :
         isError ? <ErrorMessage>Could not get articles</ErrorMessage> :
           articles.length === 0 ? <InfoMessage>No articles to display</InfoMessage> :
             articles.map((article) => {

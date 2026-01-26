@@ -15,7 +15,7 @@ export default function UpcomingEventsList({ onEditClick }) {
 
   return (
     <ItemsList itemsName="Upcoming Events">
-      {isPending ? <LoadingSpinner className="h-20 w-20" /> :
+      {isPending ? <div className="w-full h-full flex justify-center items-center"><LoadingSpinner className="h-20 w-20" /></div>:
         isError ? <ErrorMessage>Could not get upcoming events</ErrorMessage> :
           upcomingEvents.length === 0 ? <InfoMessage>No upcoming events to display</InfoMessage> :
             upcomingEvents.map((upcomingEvent) => {

@@ -12,7 +12,9 @@ export default function ItemsList({ itemsName, onEditClick, onDeleteClick, child
         All {itemsName}
       </h2>
 
-      {children}
+      <div className="flex-1 min-h-0">
+        {children}
+      </div>
     </div>
   )
 }

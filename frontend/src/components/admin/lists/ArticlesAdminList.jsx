@@ -23,7 +23,7 @@ export default function ArticleAdminList({ onEditClick }) {
               return (
                 <ItemCard key={article.id} onDelete={() => deleteArticle(article.id)} onEdit={() => onEditClick(article)}>
                   <H3>{article.title}</H3>
-                  <Anchor>{article.link}</Anchor>
+                  <Anchor href={article.link} >Link</Anchor>
                 </ItemCard>
               )
             })}

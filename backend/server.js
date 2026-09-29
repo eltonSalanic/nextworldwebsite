@@ -20,7 +20,7 @@ app.use(corsConfig);
 app.use(express.json());
 app.use(cookieParser());
 
-const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.PORT || process.env.SERVER_PORT;
 
 //test comment
 app.use('/uploads', uploadsRouter);

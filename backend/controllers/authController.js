@@ -12,7 +12,10 @@ export async function login(req, res){
     sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
     maxAge: (parseInt(process.env.REFRESH_EXPIRY_DAYS) * 24 * 60 * 60 * 1000) //in milliseconds
   });
-  res.status(200).json(tokens);
+
+  //refresh token only goes in the httpOnly cookie, never the response body
+  const { refreshToken, ...body } = tokens;
+  res.status(200).json(body);
 }
 
 export async function refresh(req, res){
@@ -31,7 +34,9 @@ export async function refresh(req, res){
     maxAge: (parseInt(process.env.REFRESH_EXPIRY_DAYS) * 24 * 60 * 60 * 1000) //in milliseconds
   });
 
-  res.status(200).json(tokens);
+  //refresh token only goes in the httpOnly cookie, never the response body
+  const { refreshToken: newRefreshToken, ...body } = tokens;
+  res.status(200).json(body);
 }
 
 export async function logout(req, res){

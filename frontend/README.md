@@ -249,6 +249,16 @@ Admin accounts are created on the backend. See [Adding admin users](../backend/R
 
 ## Deployment (Vercel)
 
+| Setting | Value |
+|---|---|
+| Vercel project | `nextworldwebsite` (in eltonsalanic's Vercel team) |
+| Source | GitHub `eltonSalanic/nextworldwebsite`, branch `main`, root directory `frontend/` |
+| Framework / Node | Vite preset, Node 24.x |
+| Production domains | `www.nxtworld.co` (main), `nxtworld.co` (308 redirect to `www`) |
+| Vercel URLs | `nextworldwebsite-zeta.vercel.app` and per-deployment URLs. These are behind Vercel login (deployment protection on everything except custom domains) |
+
+The [root README](../README.md#where-everything-is-deployed) lists where every part of the site is hosted.
+
 - **The Vercel project uses `frontend/` as its root directory.** Vercel detects Vite, runs `npm run build`, and serves `dist/`.
 - **Every push to `main` deploys to production**, and other branches get preview deployments.
 - **[`vercel.json`](vercel.json) sends every path to `index.html`**, so refreshing on a page like `/events` or `/admin/dashboard` works.

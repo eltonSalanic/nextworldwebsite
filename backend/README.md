@@ -181,8 +181,12 @@ Production runs on Railway in the project **`nextworld-website-backend`**, envir
 
 | Railway service | What it is |
 |---|---|
-| `nextworldwebsite` | This Express app, built from the GitHub repo `eltonSalanic/nextworldwebsite` |
-| `Postgres` | The managed PostgreSQL database (with a volume for its data) |
+| `nextworldwebsite` | This Express app, built from the GitHub repo `eltonSalanic/nextworldwebsite`. Region `sfo` (US West), 1 replica |
+| `Postgres` | PostgreSQL 18 (`ghcr.io/railwayapp-templates/postgres-ssl:18`) with a 500 MB volume mounted at `/var/lib/postgresql/data`. Region `sfo`. Reachable only on the private network as `postgres.railway.internal`; public networking (TCP proxy) is off |
+
+Both services have **Serverless** (app sleeping) turned on, so after a quiet period the first request is slower while they wake up. You can turn this off under each service's **Settings → Deploy**.
+
+The [root README](../README.md#where-everything-is-deployed) lists where every part of the site is hosted.
 
 ### How deploys happen
 
@@ -197,8 +201,11 @@ Production runs on Railway in the project **`nextworld-website-backend`**, envir
 |---|---|
 | Source | GitHub `eltonSalanic/nextworldwebsite`, branch `main` |
 | Root Directory | `/backend` |
+| Builder | Railpack |
 | Start command | `npm start` (the default) |
-| Custom domain | `api.nxtworld.co`, via a CNAME record at Porkbun pointing to the target Railway gives you (currently `ltjmid6r.up.railway.app`) |
+| Region / replicas | `sfo` (US West) / 1 |
+| Serverless (sleeping) | On |
+| Custom domain | `api.nxtworld.co` (routes to port 8080, which is the `PORT` Railway gives the app), via a CNAME record at Porkbun pointing to the target Railway gives you (currently `ltjmid6r.up.railway.app`) |
 
 ### Variables
 
